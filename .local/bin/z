@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#Scripts for compiling suckless tools.
+
+cd ~/wm/dwmold
+#cat ~/.local/share/.xyz | sudo -S make install
+cd ../st
+cat ~/.local/share/.xyz | sudo -S make clean install
+cd ../slstatus
+#cat ~/.local/share/.xyz | sudo -S make clean install
+cd ../dmenu
+#cat ~/.local/share/.xyz | sudo -S make clean install
+clear
+
+#Pywal Discord
+pywal-discord -t default
+#pywal-telegram
+wal-telegram --wal
+#sleep 1
+
+#unzip ~/.cache/wal-telegram/wal.tdesktop-theme
+#sleep 0.5
+
+#Changing firefox background to wallpaper
+url=$(awk '/--wallpaper:/ {print($2)}' ~/.cache/wal/colors.css)
+sed -E -i '/background:/s#(background: .* )url\([^)]*\)(.*;)#\1'"${url%;}"'\2#'  /home/samiul/.mozilla/firefox/t9t6ajim.default-release/chrome/userContent.css
+
+#restarting dwm
+#xdotool key super+ctrl+Shift+q
+xdotool key super+F5
